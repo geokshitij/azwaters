@@ -1,13 +1,7 @@
 #!/bin/bash
 
-# This script automates the process of adding GIS data layers (CAP Canal,
-# Pumps, Recharge) to the Mapbox storytelling project.
-# It performs three main tasks:
-# 1. Modifies index.html to add the GeoJSON sources and map layers.
-# 2. Modifies data/story_content.json to control layer visibility for each chapter.
-# 3. Modifies generate_story.py to ensure the /data directory is copied during build.
-#
-# The script is idempotent and will not re-apply changes if they already exist.
+# V2 - A more robust version of the upgrade script using sed.
+# This script automates adding GIS data layers to the Mapbox storytelling project.
 
 set -e # Exit immediately if a command exits with a non-zero status.
 
@@ -30,16 +24,15 @@ BUILD_SCRIPT="generate_story.py"
 # --- 2. Modify index.html to add map layers ---
 echo "➡️  Processing $INDEX_HTML..."
 
-# Check if the file has already been modified
 if grep -q "'id': 'cap-canal-layer'" "$INDEX_HTML"; then
     echo "☑️  $INDEX_HTML already contains GIS layers. Skipping."
 else
-    # Create backups
     cp "$INDEX_HTML" "$INDEX_HTML.bak"
     echo "    - Created backup: $INDEX_HTML.bak"
 
-    # Define the JS code to insert
-read -r -d '' JS_CODE_BLOCK <<'EOF'
+    # Define the JS code to insert into a temporary file
+    JS_CODE_FILE=$(mktemp)
+    cat > "$JS_CODE_FILE" <<'EOF'
         // --- START: ADDED CODE FOR GIS DATA ---
         // Add sources for CAP data
         map.addSource('cap-canal', {
@@ -96,16 +89,12 @@ read -r -d '' JS_CODE_BLOCK <<'EOF'
             }
         });
         // --- END: ADDED CODE FOR GIS DATA ---
-
 EOF
 
-    # Use awk to insert the code block before the target line
-    awk -v js_code="$JS_CODE_BLOCK" '
-    /setup the instance, pass callback functions/ {
-        print js_code
-    }
-    { print }
-    ' "$INDEX_HTML.bak" > "$INDEX_HTML"
+    # Use sed to read the contents of the temp file and insert it before the target line
+    sed -i.bak2 "/setup the instance, pass callback functions/ r $JS_CODE_FILE" "$INDEX_HTML"
+    rm "$JS_CODE_FILE" # Clean up temp file
+    rm "$INDEX_HTML.bak2" # Clean up sed backup
 
     echo "    - Injected map layer definitions into $INDEX_HTML."
 fi
@@ -113,21 +102,16 @@ fi
 # --- 3. Modify data/story_content.json to control layers ---
 echo "➡️  Processing $STORY_JSON..."
 
-# Check if the file has already been modified
 if jq -e '.chapters[] | select(.id == "cap-title") | .onChapterEnter[0].layer == "cap-canal-layer"' "$STORY_JSON" > /dev/null; then
     echo "☑️  $STORY_JSON already contains layer controls. Skipping."
 else
     cp "$STORY_JSON" "$STORY_JSON.bak"
     echo "    - Created backup: $STORY_JSON.bak"
 
-    # Use jq to update the chapters array
     jq '
     .chapters |= map(
-        # Add empty arrays to all chapters if they dont exist, for consistency
         (.onChapterEnter = if .onChapterEnter then .onChapterEnter else [] end) |
         (.onChapterExit = if .onChapterExit then .onChapterExit else [] end) |
-
-        # Update the CAP chapters to SHOW layers
         if .id == "cap-title" or .id == "cap-source" or .id == "cap-flyover" then
             .onChapterEnter = [
                 {"layer": "cap-canal-layer", "opacity": 0.85},
@@ -135,8 +119,6 @@ else
                 {"layer": "cap-recharge-layer", "opacity": 1}
             ]
         else . end |
-
-        # Update the SRP chapter to HIDE layers
         if .id == "srp-title" then
             .onChapterEnter = [
                 {"layer": "cap-canal-layer", "opacity": 0},
@@ -144,8 +126,6 @@ else
                 {"layer": "cap-recharge-layer", "opacity": 0}
             ]
         else . end |
-
-        # Add a legend to the first CAP chapter description
         if .id == "cap-title" then
             .description = "<h3>A 336-mile aqueduct defying gravity to deliver Colorado River water across the state.</h3><p>The blue line represents the CAP canal, orange dots are pumping plants, and green dots are recharge facilities.</p>"
         else . end
@@ -164,7 +144,6 @@ else
     cp "$BUILD_SCRIPT" "$BUILD_SCRIPT.bak"
     echo "    - Created backup: $BUILD_SCRIPT.bak"
 
-    # Use a heredoc to overwrite the file with the corrected version
 cat > "$BUILD_SCRIPT" <<'EOF'
 import json, os, shutil
 ACCESS_TOKEN = 'pk.eyJ1Ijoia2RhaGFsIiwiYSI6ImNtZmcyM2QzejBvcHgydXB2eGUzbWpoeG4ifQ.kNzDDcHaMjIT43MMit5Rxg'
@@ -192,4 +171,4 @@ EOF
 fi
 
 echo -e "\n🎉 All files updated successfully! Your story is now enhanced with GIS data."
-echo "You can now run your local web server to see the changes."
+echo "Run './update.sh' to commit and push the changes."
