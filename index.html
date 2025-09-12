@@ -271,11 +271,15 @@
             zoom: config.chapters[0].location.zoom,
             bearing: config.chapters[0].location.bearing,
             pitch: config.chapters[0].location.pitch,
-            interactive: false,
+            interactive: true,
             projection: config.projection
         });
 
-        // Create a inset map if enabled in config.js
+        // Add zoom and rotation controls to the map.
+        map.addControl(new mapboxgl.NavigationControl());
+
+
+        // Create an inset map if enabled in config.js
         if (config.inset) {
             map.addControl(
                 new GlobeMinimap({ ...config.insetOptions }),
