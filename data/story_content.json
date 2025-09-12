@@ -218,8 +218,8 @@
       "description": "The journey down the Verde begins at Horseshoe Dam. As the most upstream reservoir, its primary role is to capture and store precious runoff from the watershed to the north.",
       "location": {
         "center": [
-          -111.7236,
-          33.9983
+          -111.7089,
+          33.9831
         ],
         "zoom": 14,
         "pitch": 50,
@@ -235,8 +235,8 @@
       "description": "Further south, Bartlett Dam stands as an engineering landmark. At the time of its completion, it was the highest multiple-arch dam in the world, regulating flows before the Verde joins the Salt River.",
       "location": {
         "center": [
-          -111.6369,
-          33.8183
+          -111.6317,
+          33.8181
         ],
         "zoom": 13.5,
         "pitch": 55,
@@ -269,8 +269,8 @@
       "description": "The cornerstone of the entire system. Roosevelt Dam forms the largest reservoir, providing the vast majority of the storage capacity for the Salt River and symbolizing the dawn of large-scale water reclamation in the West.",
       "location": {
         "center": [
-          -111.1517,
-          33.6667
+          -111.1539,
+          33.6781
         ],
         "zoom": 13.5,
         "pitch": 60,
@@ -287,8 +287,8 @@
       "description": "Downstream from the vast expanse of Roosevelt Lake, Horse Mesa Dam creates the long, narrow Apache Lake. This dam is a hydroelectric workhorse for the system.",
       "location": {
         "center": [
-          -111.3325,
-          33.6069
+          -111.3436,
+          33.5908
         ],
         "zoom": 14,
         "pitch": 55,
@@ -304,8 +304,8 @@
       "description": "Next, Mormon Flat Dam impounds Canyon Lake. It features a powerful pumped-storage capability, allowing it to act like a giant battery by pumping water back uphill during times of low energy demand.",
       "location": {
         "center": [
-          -111.4550,
-          33.5350
+          -111.4428,
+          33.5533
         ],
         "zoom": 14,
         "pitch": 65,
@@ -321,8 +321,8 @@
       "description": "The final gateway to the valley. Stewart Mountain Dam forms the popular Saguaro Lake and is the last stop before water is released into the canals that feed the Phoenix metro area.",
       "location": {
         "center": [
-          -111.5397,
-          33.5658
+          -111.5358,
+          33.5664
         ],
         "zoom": 13.8,
         "pitch": 60,
