@@ -316,9 +316,15 @@
 
                 // --- START: Highlight Rivers in Base Map ---
                 // This makes the existing river data in the map style more prominent.
+                // For lakes, reservoirs, etc.
                 map.setPaintProperty('water', 'fill-color', '#3399ff');
-                map.setPaintProperty('waterway', 'line-color', '#3399ff');
-                map.setPaintProperty('waterway', 'line-width', 2);
+                map.setPaintProperty('water', 'fill-opacity', 0.5);
+
+                // For the actual river and stream lines
+                map.setPaintProperty('waterway-river', 'line-color', '#3399ff');
+                map.setPaintProperty('waterway-river', 'line-width', 2);
+                map.setPaintProperty('waterway-stream', 'line-color', '#3399ff');
+                map.setPaintProperty('waterway-canal', 'line-color', '#3399ff');
                 // --- END: Highlight Rivers in Base Map ---
             };
 
