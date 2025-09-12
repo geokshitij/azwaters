@@ -1,0 +1,126 @@
+{
+    "style": "mapbox://styles/mapbox/satellite-streets-v12",
+    "theme": "dark",
+    "use3dTerrain": true,
+    "showMarkers": true,
+    "markerColor": "#3FB1CE",
+    "title": "Arizona's Water Lifelines",
+    "subtitle": "A journey along the engineered rivers that sustain a desert metropolis.",
+    "byline": "By Kshitij Dahal",
+    "footer": "This story is based on presentations and information from:<br>Jacob Richardson, Salt River Project<br>Brian Buzard, Central Arizona Project<br>Ryan Johnson, Central Arizona Water Conservation District<br>Tom Buschatzke, Arizona Department of Water Resources (ADWR)<br><br><a href='https://www.srpnet.com/about/about-srp' target='_blank'>Salt River Project (SRP)</a> | <a href='https://www.cap-az.com/cap-system/water-operations/system-map/' target='_blank'>Central Arizona Project (CAP)</a>",
+    "chapters": [
+        {
+            "id": "intro-title",
+            "title": "Water in the Desert",
+            "alignment": "center",
+            "description": "Arizona's vibrant cities and farms exist because of two monumental water projects. This story explores the journey of water through the Central Arizona Project and the Salt River Project—the systems that make life in the Sonoran Desert possible.",
+            "location": {"center": [-111.5, 33.5],"zoom": 6,"pitch": 0,"bearing": 0}
+        },
+        {
+            "id": "cap-title",
+            "title": "Part 1: The Central Arizona Project",
+            "alignment": "full",
+            "description": "<h3>A 336-mile aqueduct defying gravity to deliver Colorado River water across the state.</h3>",
+            "location": {"center": [-113.0, 33.8],"zoom": 7,"pitch": 25,"bearing": 0}
+        },
+        {
+            "id": "cap-source",
+            "title": "The Source: Lake Havasu",
+            "alignment": "left",
+            "description": "Our journey begins here, on the Colorado River. The CAP diverts a portion of the river's flow, pumping it uphill to begin its long trek south. The scale of the engineering is immense, visible even from this vantage point.",
+            "location": {"center": [-114.3686, 34.4839],"zoom": 11.5,"pitch": 60,"bearing": 90}
+        },
+        {
+            "id": "cap-flyover",
+            "title": "Following the Flow",
+            "alignment": "right",
+            "description": "The water doesn't flow on its own. A series of powerful pumping plants lifts it over 2,900 feet. As we fly south, the faint line of the canal carves its way through the desert, a man-made river on an epic journey.",
+            "location": {"center": [-112.5, 33.5],"zoom": 7.5,"pitch": 20,"bearing": 0}
+        },
+        {
+            "id": "srp-title",
+            "title": "Part 2: The Salt River Project",
+            "alignment": "full",
+            "description": "<h3>Harnessing local rivers, the SRP is one of the nation's oldest and most successful reclamation projects, managing the Salt and Verde watershed.</h3>",
+            "location": {"center": [-111.5, 33.7],"zoom": 8.5,"pitch": 30,"bearing": 0}
+        },
+        {
+            "id": "verde-river-overview",
+            "title": "The Verde River System",
+            "alignment": "left",
+            "description": "The first branch of the SRP is the Verde River, controlled by two key dams. To the north lies Horseshoe Reservoir, and just downstream, Bartlett Reservoir. We'll visit them in order.",
+            "location": {"center": [-111.68, 33.9],"zoom": 10,"pitch": 40,"bearing": 170}
+        },
+        {
+            "id": "horseshoe-dam",
+            "title": "Verde Dam 1: Horseshoe (1946)",
+            "alignment": "left",
+            "description": "The journey down the Verde begins at Horseshoe Dam. As the most upstream reservoir, its primary role is to capture and store precious runoff from the watershed to the north.",
+            "location": {"center": [-111.7236, 33.9983],"zoom": 14,"pitch": 50,"bearing": 180}
+        },
+        {
+            "id": "bartlett-dam",
+            "title": "Verde Dam 2: Bartlett (1939)",
+            "alignment": "right",
+            "description": "Further south, Bartlett Dam stands as an engineering landmark. At the time of its completion, it was the highest multiple-arch dam in the world, regulating flows before the Verde joins the Salt River.",
+            "location": {"center": [-111.6369, 33.8183],"zoom": 13.5,"pitch": 55,"bearing": 160}
+        },
+        {
+            "id": "salt-river-overview",
+            "title": "The Salt River System: A Staircase of Lakes",
+            "alignment": "left",
+            "description": "The backbone of the SRP is the Salt River itself, managed by a series of four dams that descend in elevation, creating a 'staircase of lakes' and providing hydroelectric power along the way. We'll start at the top.",
+            "location": {"center": [-111.33, 33.6],"zoom": 9.5,"pitch": 40,"bearing": -20}
+        },
+        {
+            "id": "roosevelt-dam",
+            "title": "Salt Dam 1: Theodore Roosevelt (1911)",
+            "alignment": "right",
+            "description": "The cornerstone of the entire system. Roosevelt Dam forms the largest reservoir, providing the vast majority of the storage capacity for the Salt River and symbolizing the dawn of large-scale water reclamation in the West.",
+            "location": {"center": [-111.1517, 33.6667],"zoom": 13.5,"pitch": 60,"bearing": 25},
+            "rotateAnimation": true
+        },
+        {
+            "id": "horse-mesa-dam",
+            "title": "Salt Dam 2: Horse Mesa (1927)",
+            "alignment": "right",
+            "description": "Downstream from the vast expanse of Roosevelt Lake, Horse Mesa Dam creates the long, narrow Apache Lake. This dam is a hydroelectric workhorse for the system.",
+            "location": {"center": [-111.3325, 33.6069],"zoom": 14,"pitch": 55,"bearing": 0}
+        },
+        {
+            "id": "mormon-flat-dam",
+            "title": "Salt Dam 3: Mormon Flat (1925)",
+            "alignment": "left",
+            "description": "Next, Mormon Flat Dam impounds Canyon Lake. It features a powerful pumped-storage capability, allowing it to act like a giant battery by pumping water back uphill during times of low energy demand.",
+            "location": {"center": [-111.4550, 33.5350],"zoom": 14,"pitch": 65,"bearing": 30}
+        },
+        {
+            "id": "stewart-mountain-dam",
+            "title": "Salt Dam 4: Stewart Mountain (1930)",
+            "alignment": "right",
+            "description": "The final gateway to the valley. Stewart Mountain Dam forms the popular Saguaro Lake and is the last stop before water is released into the canals that feed the Phoenix metro area.",
+            "location": {"center": [-111.5397, 33.5658],"zoom": 13.8,"pitch": 60,"bearing": -45}
+        },
+        {
+            "id": "governance-title",
+            "title": "Part 3: The Architects of Water Policy",
+            "alignment": "full",
+            "description": "<h3>This complex physical system is managed by an equally complex web of agencies, ensuring every drop is accounted for, treated, and delivered.</h3>",
+            "location": {"center": [-111.5, 33.0],"zoom": 6.5,"pitch": 0,"bearing": 0}
+        },
+        {
+            "id": "governance-agencies",
+            "title": "Who's in Charge?",
+            "alignment": "center",
+            "description": "Managing this system involves multiple key agencies: <ul><li><strong>Bureau of Reclamation:</strong> The federal agency that financed and constructed many of these massive projects.</li><li><strong>ADWR:</strong> The Arizona Department of Water Resources, which oversees water rights and long-term planning.</li><li><strong>CAWCD & SRP:</strong> The local districts that operate the systems day-to-day.</li></ul>",
+            "location": {"center": [-111.5, 33.0],"zoom": 6.5,"pitch": 0,"bearing": 0}
+        },
+        {
+            "id": "conclusion",
+            "title": "An Engineered Oasis",
+            "alignment": "center",
+            "description": "The result of this century of engineering is a thriving metropolis in the heart of the desert. These projects are a testament to human ingenuity, but they also highlight the profound responsibility of managing a finite resource in an arid land.",
+            "location": {"center": [-112.0740, 33.4484],"zoom": 9,"pitch": 50,"bearing": 0}
+        }
+    ]
+}

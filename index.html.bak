@@ -316,62 +316,6 @@
             };
 
             // setup the instance, pass callback functions
-        // --- START: ADDED CODE FOR GIS DATA ---
-        // Add sources for CAP data
-        map.addSource('cap-canal', {
-            'type': 'geojson',
-            'data': './data/CAP_Canal.geojson'
-        });
-
-        map.addSource('cap-pumps', {
-            'type': 'geojson',
-            'data': './data/CAP_pumps.geojson'
-        });
-
-        map.addSource('cap-recharge', {
-            'type': 'geojson',
-            'data': './data/CAP_recharge.geojson'
-        });
-
-        // Add layers for the CAP data
-        // Set initial opacity to 0 to hide them
-        map.addLayer({
-            'id': 'cap-canal-layer',
-            'type': 'line',
-            'source': 'cap-canal',
-            'paint': {
-                'line-color': '#3399ff', // A bright blue
-                'line-width': 2.5,
-                'line-opacity': 0
-            }
-        });
-
-        map.addLayer({
-            'id': 'cap-pumps-layer',
-            'type': 'circle',
-            'source': 'cap-pumps',
-            'paint': {
-                'circle-radius': 6,
-                'circle-color': '#ff4500', // Orangey-red
-                'circle-stroke-color': 'white',
-                'circle-stroke-width': 1,
-                'circle-opacity': 0
-            }
-        });
-
-        map.addLayer({
-            'id': 'cap-recharge-layer',
-            'type': 'circle',
-            'source': 'cap-recharge',
-            'paint': {
-                'circle-radius': 6,
-                'circle-color': '#33cc33', // A bright green
-                'circle-stroke-color': 'white',
-                'circle-stroke-width': 1,
-                'circle-opacity': 0
-            }
-        });
-        // --- END: ADDED CODE FOR GIS DATA ---
             scroller
                 .setup({
                     step: '.step',
