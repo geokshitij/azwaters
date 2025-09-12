@@ -52,18 +52,6 @@
         {
           "layer": "cap-recharge-layer",
           "opacity": 1
-        },
-        {
-          "layer": "cap-canal-label",
-          "opacity": 1
-        },
-        {
-          "layer": "cap-pumps-labels",
-          "opacity": 1
-        },
-        {
-          "layer": "cap-recharge-labels",
-          "opacity": 1
         }
       ],
       "onChapterExit": []
@@ -93,18 +81,6 @@
         },
         {
           "layer": "cap-recharge-layer",
-          "opacity": 1
-        },
-        {
-          "layer": "cap-canal-label",
-          "opacity": 1
-        },
-        {
-          "layer": "cap-pumps-labels",
-          "opacity": 1
-        },
-        {
-          "layer": "cap-recharge-labels",
           "opacity": 1
         }
       ],
@@ -136,18 +112,6 @@
         {
           "layer": "cap-recharge-layer",
           "opacity": 1
-        },
-        {
-          "layer": "cap-canal-label",
-          "opacity": 1
-        },
-        {
-          "layer": "cap-pumps-labels",
-          "opacity": 1
-        },
-        {
-          "layer": "cap-recharge-labels",
-          "opacity": 1
         }
       ],
       "onChapterExit": []
@@ -177,18 +141,6 @@
         },
         {
           "layer": "cap-recharge-layer",
-          "opacity": 0
-        },
-        {
-          "layer": "cap-canal-label",
-          "opacity": 0
-        },
-        {
-          "layer": "cap-pumps-labels",
-          "opacity": 0
-        },
-        {
-          "layer": "cap-recharge-labels",
           "opacity": 0
         }
       ],
