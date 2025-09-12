@@ -14,29 +14,24 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
+    - name: Checkout
       uses: actions/checkout@v4
-
-    - name: Build the site
-      run: |
-        # This is a more reliable build process than the Python script.
-        # It creates the output directory and copies all necessary files.
-        mkdir -p output
-        cp index.html output/
-        cp config.js output/
-        # Copy all data and assets if they exist
-        if [ -d "data" ]; then cp -r data output/; fi
-        if [ -d "assets" ]; then cp -r assets output/; fi
-
+      
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+        
+    - name: Run Python build script
+      run: python generate_story.py
+      
     - name: Verify build output
-      run: |
-        echo "Verifying contents of the 'output' directory:"
-        ls -R output
-
+      run: ls -R output
+      
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
         path: './output'
-
+        
     - name: Deploy to GitHub Pages
       uses: actions/deploy-pages@v4
