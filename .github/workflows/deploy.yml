@@ -25,10 +25,12 @@ jobs:
     - name: Run Python build script
       run: python generate_story.py
       
+    - name: Verify build output
+      run: ls -R output
+      
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
-        # This is the critical line that was missing
         path: './output'
         
     - name: Deploy to GitHub Pages

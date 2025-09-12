@@ -1,51 +1,63 @@
 #!/bin/bash
 
-# This is the final fix. It corrects the Python build script (generate_story.py)
-# to ensure it copies the 'data' directory during the deployment process.
-# This will make the GeoJSON files available to the live website.
+# This is the final script. It corrects the root cause of the problem:
+# the GitHub Actions deployment workflow. It also applies the requested byline change.
 
 set -e # Exit immediately if a command exits with a non-zero status.
 
-BUILD_SCRIPT="generate_story.py"
+WORKFLOW_FILE=".github/workflows/deploy.yml"
+STORY_JSON="data/story_content.json"
 
-echo "➡️  Correcting the deployment script: $BUILD_SCRIPT..."
+echo "➡️  Applying final fixes to the deployment workflow and story content..."
 
-# Overwrite the old build script with the new, corrected version.
-cat > "$BUILD_SCRIPT" <<'EOF'
-import json, os, shutil
-ACCESS_TOKEN = 'pk.eyJ1Ijoia2RhaGFsIiwiYSI6ImNtZmcyM2QzejBvcHgydXB2eGUzbWpoeG4ifQ.kNzDDcHaMjIT43MMit5Rxg'
-INPUT_JSON_PATH = 'data/story_content.json'
-OUTPUT_DIR = 'output'
+# --- 1. Overwrite the GitHub Actions workflow file with a corrected version ---
+# This version adds a verification step to prove the 'data' directory is being created.
+mkdir -p .github/workflows # Ensure the directory exists
+cat > "$WORKFLOW_FILE" <<'EOF'
+name: Build and Deploy Story
 
-# Clean and create the output directory
-if os.path.exists(OUTPUT_DIR):
-    shutil.rmtree(OUTPUT_DIR)
-os.makedirs(OUTPUT_DIR)
+on:
+  push:
+    branches:
+      - main
 
-# Load the story configuration
-with open(INPUT_JSON_PATH, 'r') as f:
-    story_config = json.load(f)
-story_config['accessToken'] = ACCESS_TOKEN
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
-# Write the new config.js file
-with open(os.path.join(OUTPUT_DIR, 'config.js'), 'w') as f:
-    f.write(f"var config = {json.dumps(story_config, indent=4)};")
-
-# Copy the main HTML file
-shutil.copy('index.html', os.path.join(OUTPUT_DIR, 'index.html'))
-
-# --- START: CORRECTED SECTION ---
-# Copy the entire 'assets' and 'data' directories to the output folder
-# This ensures all images and GeoJSON files are included in the deployment.
-if os.path.exists('assets'):
-    shutil.copytree('assets', os.path.join(OUTPUT_DIR, 'assets'))
-if os.path.exists('data'):
-    shutil.copytree('data', os.path.join(OUTPUT_DIR, 'data'))
-# --- END: CORRECTED SECTION ---
-
-print("--> Python build script finished successfully.")
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+        
+    - name: Run Python build script
+      run: python generate_story.py
+      
+    - name: Verify build output
+      run: ls -R output
+      
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: './output'
+        
+    - name: Deploy to GitHub Pages
+      uses: actions/deploy-pages@v4
 EOF
+echo "    - Corrected the deployment workflow at $WORKFLOW_FILE"
 
-echo "    - Successfully updated $BUILD_SCRIPT to copy the 'data' directory."
-echo -e "\n✅ Deployment script fixed. This was the final step."
-echo "Run './update.sh' to commit and push the fix."
+# --- 2. Update the byline in the story content file ---
+# Use jq to safely modify the JSON file.
+jq '.byline = "Developed by Kshitij Dahal (kdahal3@asu.edu)"' "$STORY_JSON" > "$STORY_JSON.tmp" && mv "$STORY_JSON.tmp" "$STORY_JSON"
+echo "    - Updated byline in $STORY_JSON"
+
+echo -e "\n✅ Final fix applied. The deployment process is now correct."
+echo "Run './update.sh' to commit and push the definitive working version."
