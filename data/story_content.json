@@ -4,28 +4,118 @@
     "use3dTerrain": true,
     "showMarkers": true,
     "markerColor": "#3FB1CE",
-    "title": "Arizona's Lifelines: The Story of SRP and CAP",
-    "subtitle": "An interactive story of how water shaped the desert.",
-    "byline": "By A Digital Historian",
+    "title": "Arizona's Water Systems",
+    "subtitle": "An interactive story of the Salt River Project and the Central Arizona Project.",
+    "byline": "By Kshitij Dahal",
     "footer": "Created using the Mapbox Storytelling template.",
     "chapters": [
         {
-            "id": "hohokam",
+            "id": "intro-hohokam",
             "title": "The Ancient Innovators",
             "alignment": "left",
-            "image": "./assets/hohokam.jpg",
-            "description": "The Hohokam people engineered a vast and sophisticated canal network in the Salt River Valley centuries ago, laying the groundwork for modern irrigation.",
-            "location": {"center": [-112.0740, 33.4484],"zoom": 11,"pitch": 20,"bearing": 0},
+            "image": "./assets/hohokam_canals.jpg",
+            "description": "Long before modern dams, the Hohokam people engineered a vast and sophisticated canal network in the Salt River Valley, laying the groundwork for all future irrigation in the region. Many of today's canals follow these ancient paths.",
+            "location": {"center": [-112.0740, 33.4484],"zoom": 10.5,"pitch": 25,"bearing": 0},
+            "rotateAnimation": false
+        },
+        {
+            "id": "srp-salt-river",
+            "title": "The Salt River Dams",
+            "alignment": "right",
+            "image": "./assets/srp_logo.jpg",
+            "description": "The Salt River Project (SRP) was formed to tame the unpredictable Salt River. A series of four dams were built, creating a staircase of reservoirs that provide water and hydroelectric power to the Phoenix metropolitan area.",
+            "location": {"center": [-111.33, 33.6],"zoom": 9,"pitch": 40,"bearing": -20},
             "rotateAnimation": false
         },
         {
             "id": "roosevelt-dam",
-            "title": "Taming the Salt River",
-            "alignment": "right",
-            "image": "./assets/roosevelt.jpg",
-            "description": "The Theodore Roosevelt Dam, completed in 1911, was a monumental feat of engineering that secured a reliable water source for the valley.",
-            "location": {"center": [-111.1517, 33.6667],"zoom": 13.5,"pitch": 60,"bearing": -30},
+            "title": "1. Theodore Roosevelt Dam",
+            "alignment": "left",
+            "image": "./assets/roosevelt_dam.jpg",
+            "description": "The cornerstone of the SRP system, Roosevelt Dam was completed in 1911. At the time, it was the largest masonry dam in the world and formed the largest artificial lake. It provides the primary water storage for the Salt River.",
+            "location": {"center": [-111.1517, 33.6667],"zoom": 13.5,"pitch": 60,"bearing": 25},
             "rotateAnimation": true
+        },
+        {
+            "id": "horse-mesa-dam",
+            "title": "2. Horse Mesa Dam",
+            "alignment": "right",
+            "image": "./assets/horse_mesa_dam.jpg",
+            "description": "Downstream from Roosevelt Lake is Apache Lake, formed by Horse Mesa Dam. Completed in 1927, it was the highest multiple-arch dam in the world at the time and plays a key role in generating power.",
+            "location": {"center": [-111.3325, 33.6069],"zoom": 14,"pitch": 55,"bearing": 0},
+            "rotateAnimation": false
+        },
+        {
+            "id": "mormon-flat-dam",
+            "title": "3. Mormon Flat Dam",
+            "alignment": "left",
+            "image": "./assets/mormon_flat_dam.jpg",
+            "description": "Next in the chain is Mormon Flat Dam, which creates Canyon Lake. This dam, finished in 1925, is notable for its powerful pumped-storage hydroelectric capabilities, acting like a giant battery for the electrical grid.",
+            "location": {"center": [-111.4550, 33.5350],"zoom": 14,"pitch": 65,"bearing": 30},
+            "rotateAnimation": false
+        },
+        {
+            "id": "stewart-mountain-dam",
+            "title": "4. Stewart Mountain Dam",
+            "alignment": "right",
+            "image": "./assets/stewart_mountain_dam.jpg",
+            "description": "The final dam on the Salt River is Stewart Mountain Dam, creating Saguaro Lake. Completed in 1930, it is the last stop for water before it is released into the canals that flow through Phoenix.",
+            "location": {"center": [-111.5397, 33.5658],"zoom": 13.8,"pitch": 60,"bearing": -45},
+            "rotateAnimation": false
+        },
+        {
+            "id": "srp-verde-river",
+            "title": "The Verde River Dams",
+            "alignment": "left",
+            "image": "./assets/verde_river.jpg",
+            "description": "The SRP also manages the Verde River, the Salt River's main tributary. Two dams on the Verde provide additional water storage, crucial for ensuring a reliable supply during dry years.",
+            "location": {"center": [-111.6, 33.9],"zoom": 9,"pitch": 30,"bearing": 0},
+            "rotateAnimation": false
+        },
+        {
+            "id": "horseshoe-dam",
+            "title": "1. Horseshoe Dam",
+            "alignment": "right",
+            "image": "./assets/horseshoe_dam.jpg",
+            "description": "The northernmost dam in the system is Horseshoe Dam, completed in 1946. It primarily serves as a storage reservoir, holding water that can be released downstream to Bartlett Lake as needed.",
+            "location": {"center": [-111.7236, 33.9983],"zoom": 14,"pitch": 50,"bearing": 180},
+            "rotateAnimation": false
+        },
+        {
+            "id": "bartlett-dam",
+            "title": "2. Bartlett Dam",
+            "alignment": "left",
+            "image": "./assets/bartlett_dam.jpg",
+            "description": "Downstream sits Bartlett Dam, which creates Bartlett Reservoir. When it was completed in 1939, it was the highest multiple-arch dam in the world. Water from here joins the Salt River before entering the canal system.",
+            "location": {"center": [-111.6369, 33.8183],"zoom": 13.5,"pitch": 55,"bearing": 160},
+            "rotateAnimation": false
+        },
+        {
+            "id": "cap-intro",
+            "title": "The Central Arizona Project",
+            "alignment": "full",
+            "image": "./assets/cap_canal.jpg",
+            "description": "To supplement the river water and reduce reliance on groundwater, Arizona embarked on one of the most ambitious water projects in US history: the Central Arizona Project (CAP). This 336-mile aqueduct lifts water from the Colorado River and carries it to the central and southern parts of the state.",
+            "location": {"center": [-113.0, 33.8],"zoom": 7,"pitch": 0,"bearing": 0},
+            "rotateAnimation": false
+        },
+        {
+            "id": "cap-pumping-plant",
+            "title": "Lifting a River Uphill",
+            "alignment": "right",
+            "image": "./assets/cap_pumps.jpg",
+            "description": "The journey begins at the Mark Wilmer Pumping Plant on Lake Havasu. A series of 14 massive pumping plants are required to lift the Colorado River water over 2,900 feet in elevation on its journey across Arizona. It is an immense feat of engineering.",
+            "location": {"center": [-114.3686, 34.4839],"zoom": 13,"pitch": 45,"bearing": 90},
+            "rotateAnimation": true
+        },
+        {
+            "id": "conclusion",
+            "title": "A Lifeline for the Desert",
+            "alignment": "center",
+            "image": "./assets/phoenix_skyline.jpg",
+            "description": "Together, the historic Salt River Project and the modern Central Arizona Project form the backbone of Arizona's water supply, enabling cities and farms to thrive in one of the driest regions in the country. Managing this precious resource remains the state's greatest challenge and achievement.",
+            "location": {"center": [-112.0740, 33.4484],"zoom": 12,"pitch": 50,"bearing": 0},
+            "rotateAnimation": false
         }
     ]
 }
