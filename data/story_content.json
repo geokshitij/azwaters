@@ -114,6 +114,7 @@
       "id": "cap-flyover",
       "title": "Following the Flow",
       "alignment": "right",
+      "showMarker": false,
       "description": "The water doesn't flow on its own. A series of powerful pumping plants lifts it over 2,900 feet. As we fly south, the faint line of the canal carves its way through the desert, a man-made river on an epic journey.",
       "location": {
         "center": [
@@ -287,7 +288,7 @@
       "description": "The other major branch of the SRP is the Verde River, controlled by two key dams. To the north lies Horseshoe Reservoir, and just downstream, Bartlett Reservoir. We'll visit them in order.",
       "location": {
         "center": [
-          -111.68,
+          -111.60,
           33.9
         ],
         "zoom": 10,

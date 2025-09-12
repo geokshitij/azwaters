@@ -133,11 +133,42 @@
         .mapboxgl-canvas-container.mapboxgl-touch-zoom-rotate.mapboxgl-touch-drag-pan .mapboxgl-canvas {
             touch-action: unset;
         }
+
+        /* --- START: Styles for Navigation Buttons --- */
+        #navigation-controls {
+            position: fixed;
+            bottom: 40px;
+            right: 10px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #navigation-controls button {
+            background-color: rgba(68, 68, 68, 0.8);
+            color: #fafafa;
+            border: 1px solid #fafafa;
+            border-radius: 3px;
+            padding: 8px 12px;
+            margin-top: 5px;
+            cursor: pointer;
+            font-family: sans-serif;
+            font-size: 14px;
+        }
+
+        #navigation-controls button:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        /* --- END: Styles for Navigation Buttons --- */
     </style>
 </head>
 
 <body>
 
+    <div id="navigation-controls">
+        <button id="prev-button">▲ Previous</button>
+        <button id="next-button">Next ▼</button>
+    </div>
     <div id="map"></div>
     <div id="story"></div>
 
@@ -278,6 +309,9 @@
         // Add zoom and rotation controls to the map.
         map.addControl(new mapboxgl.NavigationControl());
 
+        // --- START: ADDED SCALE CONTROL ---
+        map.addControl(new mapboxgl.ScaleControl());
+        // --- END: ADDED SCALE CONTROL ---
 
         // Create an inset map if enabled in config.js
         if (config.inset) {
@@ -295,6 +329,7 @@
         // instantiate the scrollama
         var scroller = scrollama();
 
+        var currentChapterIndex = 0;
 
         map.on("load", function () {
             if (config.use3dTerrain) {
@@ -459,14 +494,23 @@
                 })
                 .onStepEnter(async response => {
                     var current_chapter = config.chapters.findIndex(chap => chap.id === response.element.id);
+                    currentChapterIndex = current_chapter; // Store current index
                     var chapter = config.chapters[current_chapter];
 
                     response.element.classList.add('active');
                     map[chapter.mapAnimation || 'flyTo'](chapter.location);
 
+                    // --- START: MODIFIED MARKER LOGIC ---
                     if (config.showMarkers) {
-                        marker.setLngLat(chapter.location.center);
+                        // Check for a chapter-specific override
+                        if (chapter.showMarker === false) {
+                            marker.getElement().style.visibility = 'hidden';
+                        } else {
+                            marker.getElement().style.visibility = 'visible';
+                            marker.setLngLat(chapter.location.center);
+                        }
                     }
+                    // --- END: MODIFIED MARKER LOGIC ---
                     if (chapter.onChapterEnter.length > 0) {
                         chapter.onChapterEnter.forEach(setLayerOpacity);
                     }
@@ -502,7 +546,31 @@
             if (config.auto) {
                 document.querySelectorAll('[data-scrollama-index="0"]')[0].scrollIntoView();
             }
-        });    
+        });
+
+        // --- START: ADDED NAVIGATION BUTTON LOGIC ---
+        document.getElementById('prev-button').addEventListener('click', () => {
+            if (currentChapterIndex > 0) {
+                currentChapterIndex--;
+                const chapterId = config.chapters[currentChapterIndex].id;
+                document.getElementById(chapterId).scrollIntoView({ behavior: 'smooth' });
+            } else {
+                 // Optionally scroll to the very top header
+                 document.getElementById('header').scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+
+        document.getElementById('next-button').addEventListener('click', () => {
+            if (currentChapterIndex < config.chapters.length - 1) {
+                currentChapterIndex++;
+                const chapterId = config.chapters[currentChapterIndex].id;
+                document.getElementById(chapterId).scrollIntoView({ behavior: 'smooth' });
+            } else {
+                // Optionally scroll to the footer
+                document.getElementById('footer').scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+        // --- END: ADDED NAVIGATION BUTTON LOGIC ---
 
     </script>
 
