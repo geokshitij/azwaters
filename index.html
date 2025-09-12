@@ -329,23 +329,6 @@
             };
 
             // setup the instance, pass callback functions
-        // --- START: ADD RIVERS DATA ---
-        map.addSource('az-rivers', {
-            'type': 'geojson',
-            'data': './data/AZ_rivers.geojson'
-        });
-
-        map.addLayer({
-            'id': 'az-rivers-layer',
-            'type': 'line',
-            'source': 'az-rivers',
-            'paint': {
-                'line-color': '#00BFFF', // A deep sky blue
-                'line-width': 1.5,
-                'line-opacity': 0.6 // Slightly transparent to not overwhelm
-            }
-        }, 'cap-canal-layer'); // This places the rivers layer *before* the canal layer
-        // --- END: ADD RIVERS DATA ---
 
         // --- START: ADDED CODE FOR GIS DATA ---
         // Add sources for CAP data

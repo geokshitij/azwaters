@@ -1,57 +1,51 @@
 #!/bin/bash
 
-# This is the final, targeted fix. It corrects the river styling by using the
-# exact layer names from the 'mapbox/satellite-streets-v12' style.
+# This script fixes the river display issue by removing an incorrect block of code
+# from index.html that tries to load a non-existent GeoJSON file.
+# This allows the correct, pre-existing code that styles the base map's
+# water layers to function as intended.
 
 set -e # Exit immediately if a command exits with a non-zero status.
 
-echo "--- Step 1: Restoring index.html to a known-good state ---"
-# This ensures we start from a clean, working base (commit c605e83).
-git checkout c605e83 -- index.html
-echo "    - index.html restored."
+INDEX_FILE="index.html"
+TEMP_FILE="index.html.temp"
+START_MARKER="// --- START: ADD RIVERS DATA ---"
+END_MARKER="// --- END: ADD RIVERS DATA ---"
 
-# --- Define file paths ---
-INDEX_HTML="index.html"
+echo "➡️  Starting the fix to correctly display rivers..."
 
-echo "--- Step 2: Modifying index.html with the CORRECT river layer names ---"
-# This method rebuilds the file to guarantee success.
-NEW_INDEX_HTML="index.new.html"
-# Find the line number to insert our new code after.
-INSERT_LINE=$(grep -n "'sky-atmosphere-sun-intensity': 15" "$INDEX_HTML" | cut -d: -f1)
+# --- 1. Check if the incorrect block exists ---
+if ! grep -q "$START_MARKER" "$INDEX_FILE"; then
+    echo "✅ The incorrect river data block was not found."
+    echo "It appears this fix has already been applied. No changes needed."
+    exit 0
+fi
 
-# Part 1: Everything up to and including our insertion point
-head -n "$INSERT_LINE" "$INDEX_HTML" > "$NEW_INDEX_HTML"
+echo "    - Found the incorrect river data block. Proceeding with removal."
 
-# Part 2: The NEW, CORRECT code block to re-style the water layers
-cat >> "$NEW_INDEX_HTML" <<'EOF'
-                    }
-                });
+# --- 2. Find the line numbers of the block to remove ---
+START_LINE=$(grep -n "$START_MARKER" "$INDEX_FILE" | cut -d: -f1)
+END_LINE=$(grep -n "$END_MARKER" "$INDEX_FILE" | cut -d: -f1)
 
-                // --- START: Highlight Rivers in Base Map ---
-                // This makes the existing river data in the map style more prominent.
-                // For lakes, reservoirs, etc.
-                map.setPaintProperty('water', 'fill-color', '#3399ff');
-                map.setPaintProperty('water', 'fill-opacity', 0.5);
+if [ -z "$START_LINE" ] || [ -z "$END_LINE" ]; then
+    echo "Error: Could not find the start or end markers for the block to remove."
+    exit 1
+fi
 
-                // For the actual river and stream lines
-                map.setPaintProperty('waterway-river', 'line-color', '#3399ff');
-                map.setPaintProperty('waterway-river', 'line-width', 2);
-                map.setPaintProperty('waterway-stream', 'line-color', '#3399ff');
-                map.setPaintProperty('waterway-canal', 'line-color', '#3399ff');
-                // --- END: Highlight Rivers in Base Map ---
-            };
+echo "    - The block to be removed is between lines $START_LINE and $END_LINE."
 
-            // setup the instance, pass callback functions
-EOF
+# --- 3. Rebuild the file without the incorrect block ---
+# Copy everything BEFORE the start marker to a new temp file
+head -n $(($START_LINE - 1)) "$INDEX_FILE" > "$TEMP_FILE"
 
-# Part 3: Everything AFTER the block we are replacing
-# We find the line "// setup the instance..." and take everything after it.
-TAIL_START_LINE=$(grep -n "// setup the instance, pass callback functions" "$INDEX_HTML" | cut -d: -f1)
-tail -n +$(($TAIL_START_LINE + 1)) "$INDEX_HTML" >> "$NEW_INDEX_HTML"
+# Append everything AFTER the end marker to the new temp file
+tail -n +$(($END_LINE + 1)) "$INDEX_FILE" >> "$TEMP_FILE"
 
-# Replace the old file with the new one
-mv "$NEW_INDEX_HTML" "$INDEX_HTML"
-echo "    - Successfully added correct river highlighting to index.html."
+echo "    - A corrected version of index.html has been created."
 
-echo -e "\n✅ Final fix complete. The river styling is now correct."
-echo "Run './update.sh' to commit and push the final working version."
+# --- 4. Replace the old file with the new, corrected one ---
+mv "$TEMP_FILE" "$INDEX_FILE"
+echo "    - The original index.html has been replaced."
+
+echo -e "\n🎉 Fix complete! The incorrect code has been removed."
+echo "The map will now correctly highlight the rivers from the base map style."
