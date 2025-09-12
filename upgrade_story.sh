@@ -1,24 +1,27 @@
 #!/bin/bash
 
-# This is the definitive upgrade script. It assumes index.html is in a clean,
-# working state and replaces the old map layer definitions with the new,
-# complete ones (including rivers and labels).
+# This is the definitive and final script to upgrade the project.
+# It avoids all complex in-place editing by building a new index.html file from scratch.
+# This is the most robust and reliable method.
 
 set -e # Exit immediately if a command exits with a non-zero status.
 
 INDEX_HTML="index.html"
+NEW_INDEX_HTML="index.new.html"
 
-echo "➡️  Starting the final upgrade process for $INDEX_HTML..."
+echo "➡️  Starting the definitive build process for the final page..."
 
-# Check if the work is already done.
-if grep -q "'id': 'az-rivers-layer'" "$INDEX_HTML"; then
-    echo "✅  The final layers already exist in $INDEX_HTML. No action needed."
-    exit 0
+# Check if the file is in a clean state. If not, instruct the user.
+if ! grep -q "// --- START: ADDED CODE FOR GIS DATA ---" "$INDEX_HTML"; then
+    echo "❌ Error: index.html is not in the expected clean state."
+    echo "Please run this command first to restore it:"
+    echo "git checkout 36f4416 -- index.html"
+    exit 1
 fi
 
-# --- Create a temporary file with the NEW, COMPLETE code block ---
-COMPLETE_CODE_BLOCK=$(mktemp)
-cat > "$COMPLETE_CODE_BLOCK" <<'EOF'
+# --- 1. Define the complete, new block of code for all layers ---
+CODE_BLOCK_FILE=$(mktemp)
+cat > "$CODE_BLOCK_FILE" <<'EOF'
         // --- START: ADD RIVERS DATA ---
         map.addSource('az-rivers', {
             'type': 'geojson',
@@ -156,18 +159,24 @@ cat > "$COMPLETE_CODE_BLOCK" <<'EOF'
         // --- END: NEW LABEL LAYERS ---
 EOF
 
-# Find the start and end lines of the OLD code block to be replaced.
+# --- 2. Find the line numbers for the old block we want to replace ---
 START_LINE=$(grep -n "// --- START: ADDED CODE FOR GIS DATA ---" "$INDEX_HTML" | cut -d: -f1)
 END_LINE=$(grep -n "// --- END: ADDED CODE FOR GIS DATA ---" "$INDEX_HTML" | cut -d: -f1)
 
-# Use sed to delete the old block and replace it with the contents of our new file.
-# This is a robust way to do a block replacement.
-sed -i.bak -e "${START_LINE},${END_LINE}d" -e "${START_LINE}r $COMPLETE_CODE_BLOCK" "$INDEX_HTML"
+# --- 3. Build the new file by stitching the pieces together ---
+# Part 1: Everything BEFORE the old block
+head -n $(($START_LINE - 1)) "$INDEX_HTML" > "$NEW_INDEX_HTML"
 
-# Clean up
-rm "$COMPLETE_CODE_BLOCK"
-rm "$INDEX_HTML.bak"
+# Part 2: The NEW complete code block
+cat "$CODE_BLOCK_FILE" >> "$NEW_INDEX_HTML"
 
-echo "    - Successfully replaced old layer definitions with the complete new set."
-echo -e "\n✅ Final upgrade complete. The project is now fully functional with all features."
-echo "Run './update.sh' to commit and push."
+# Part 3: Everything AFTER the old block
+tail -n +$(($END_LINE + 1)) "$INDEX_HTML" >> "$NEW_INDEX_HTML"
+
+# --- 4. Replace the old file with the new one and clean up ---
+mv "$NEW_INDEX_HTML" "$INDEX_HTML"
+rm "$CODE_BLOCK_FILE"
+
+echo "    - Successfully rebuilt $INDEX_HTML with all new layers."
+echo -e "\n✅ Final build complete. The project is now fully upgraded."
+echo "Run './update.sh' to commit and push the final, working version."
