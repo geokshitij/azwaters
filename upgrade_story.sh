@@ -1,65 +1,24 @@
 #!/bin/bash
 
-# This is a complete and robust script to enhance the storytelling map.
-# It is idempotent, meaning it is safe to run multiple times.
-#
-# It performs the following automated tasks:
-# 1. Downloads Arizona Major Rivers GeoJSON data if it doesn't exist.
-# 2. Modifies index.html to add a layer for the rivers.
-# 3. Modifies index.html to add symbol layers for labeling the CAP canal, pumps, and recharge sites.
-# 4. Modifies data/story_content.json to control the visibility of the new labels.
+# This is the definitive upgrade script. It assumes index.html is in a clean,
+# working state and replaces the old map layer definitions with the new,
+# complete ones (including rivers and labels).
 
 set -e # Exit immediately if a command exits with a non-zero status.
 
-# --- 0. Configuration ---
-RIVERS_URL="https://services1.arcgis.com/Ezk9fcjSUkeadg6u/arcgis/rest/services/Major_Rivers/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson"
-RIVERS_FILE="data/AZ_rivers.geojson"
 INDEX_HTML="index.html"
-STORY_JSON="data/story_content.json"
 
-# --- 1. Dependency Checks ---
-if ! command -v jq &> /dev/null; then
-    echo "Error: 'jq' is not installed. It is required to safely edit JSON."
-    echo "On macOS: brew install jq"
-    exit 1
-fi
-if ! command -v curl &> /dev/null; then
-    echo "Error: 'curl' is not installed. It is required to download data."
-    exit 1
-fi
-echo "✅ Dependencies 'jq' and 'curl' are installed."
+echo "➡️  Starting the final upgrade process for $INDEX_HTML..."
 
-# --- 2. Download River Data ---
-echo "➡️  Processing River Data..."
-if [ -f "$RIVERS_FILE" ]; then
-    echo "☑️  $RIVERS_FILE already exists. Skipping download."
-else
-    echo "    - Downloading Arizona Major Rivers data..."
-    curl -s -L "$RIVERS_URL" -o "$RIVERS_FILE"
-    if [ $? -eq 0 ] && [ -s "$RIVERS_FILE" ]; then
-        echo "    - Successfully saved to $RIVERS_FILE."
-    else
-        echo "    - Error: Failed to download or save river data. Aborting."
-        rm -f "$RIVERS_FILE" # Clean up empty file on failure
-        exit 1
-    fi
+# Check if the work is already done.
+if grep -q "'id': 'az-rivers-layer'" "$INDEX_HTML"; then
+    echo "✅  The final layers already exist in $INDEX_HTML. No action needed."
+    exit 0
 fi
 
-# --- 3. Modify index.html to add all new layers ---
-echo "➡️  Processing $INDEX_HTML..."
-
-if grep -q "'id': 'cap-canal-label'" "$INDEX_HTML"; then
-    echo "☑️  $INDEX_HTML already contains label and river layers. Skipping."
-else
-    cp "$INDEX_HTML" "$INDEX_HTML.bak.final"
-    echo "    - Created backup: $INDEX_HTML.bak.final"
-
-    # Create temporary files for the code blocks to ensure portability
-    RIVERS_CODE_FILE=$(mktemp)
-    LABELS_CODE_FILE=$(mktemp)
-
-    # --- Populate Rivers Layer Block ---
-    cat > "$RIVERS_CODE_FILE" <<'EOF'
+# --- Create a temporary file with the NEW, COMPLETE code block ---
+COMPLETE_CODE_BLOCK=$(mktemp)
+cat > "$COMPLETE_CODE_BLOCK" <<'EOF'
         // --- START: ADD RIVERS DATA ---
         map.addSource('az-rivers', {
             'type': 'geojson',
@@ -77,10 +36,63 @@ else
             }
         }, 'cap-canal-layer'); // This places the rivers layer *before* the canal layer
         // --- END: ADD RIVERS DATA ---
-EOF
 
-    # --- Populate Labels Layer Block ---
-    cat > "$LABELS_CODE_FILE" <<'EOF'
+        // --- START: ADDED CODE FOR GIS DATA ---
+        // Add sources for CAP data
+        map.addSource('cap-canal', {
+            'type': 'geojson',
+            'data': './data/CAP_Canal.geojson'
+        });
+
+        map.addSource('cap-pumps', {
+            'type': 'geojson',
+            'data': './data/CAP_pumps.geojson'
+        });
+
+        map.addSource('cap-recharge', {
+            'type': 'geojson',
+            'data': './data/CAP_recharge.geojson'
+        });
+
+        // Add layers for the CAP data
+        // Set initial opacity to 0 to hide them
+        map.addLayer({
+            'id': 'cap-canal-layer',
+            'type': 'line',
+            'source': 'cap-canal',
+            'paint': {
+                'line-color': '#3399ff', // A bright blue
+                'line-width': 2.5,
+                'line-opacity': 0
+            }
+        });
+
+        map.addLayer({
+            'id': 'cap-pumps-layer',
+            'type': 'circle',
+            'source': 'cap-pumps',
+            'paint': {
+                'circle-radius': 6,
+                'circle-color': '#ff4500', // Orangey-red
+                'circle-stroke-color': 'white',
+                'circle-stroke-width': 1,
+                'circle-opacity': 0
+            }
+        });
+
+        map.addLayer({
+            'id': 'cap-recharge-layer',
+            'type': 'circle',
+            'source': 'cap-recharge',
+            'paint': {
+                'circle-radius': 6,
+                'circle-color': '#33cc33', // A bright green
+                'circle-stroke-color': 'white',
+                'circle-stroke-width': 1,
+                'circle-opacity': 0
+            }
+        });
+        // --- END: ADDED CODE FOR GIS DATA ---
 
         // --- START: ADD NEW LABEL LAYERS HERE ---
         // Add labels for the PUMPING stations
@@ -144,52 +156,18 @@ EOF
         // --- END: NEW LABEL LAYERS ---
 EOF
 
-    # Use sed to insert the contents of the temp files. This is the most reliable method.
-    # First, insert the rivers code.
-    sed -i.bak "/map.addSource('cap-canal'/ r $RIVERS_CODE_FILE" "$INDEX_HTML"
-    # Then, insert the labels code.
-    sed -i.bak "/\/\/ --- END: ADDED CODE FOR GIS DATA ---/ r $LABELS_CODE_FILE" "$INDEX_HTML"
+# Find the start and end lines of the OLD code block to be replaced.
+START_LINE=$(grep -n "// --- START: ADDED CODE FOR GIS DATA ---" "$INDEX_HTML" | cut -d: -f1)
+END_LINE=$(grep -n "// --- END: ADDED CODE FOR GIS DATA ---" "$INDEX_HTML" | cut -d: -f1)
 
-    # Clean up temporary files
-    rm "$RIVERS_CODE_FILE" "$LABELS_CODE_FILE"
-    rm "$INDEX_HTML.bak" # sed creates this backup, we remove it for cleanliness
+# Use sed to delete the old block and replace it with the contents of our new file.
+# This is a robust way to do a block replacement.
+sed -i.bak -e "${START_LINE},${END_LINE}d" -e "${START_LINE}r $COMPLETE_CODE_BLOCK" "$INDEX_HTML"
 
-    echo "    - Injected river and label layer definitions into $INDEX_HTML."
-fi
+# Clean up
+rm "$COMPLETE_CODE_BLOCK"
+rm "$INDEX_HTML.bak"
 
-# --- 4. Modify data/story_content.json to control labels ---
-echo "➡️  Processing $STORY_JSON..."
-
-if jq -e '.chapters[] | select(.id == "cap-title") | .onChapterEnter[] | select(.layer == "cap-canal-label")' "$STORY_JSON" > /dev/null; then
-    echo "☑️  $STORY_JSON already contains label controls. Skipping."
-else
-    cp "$STORY_JSON" "$STORY_JSON.bak.final"
-    echo "    - Created backup: $STORY_JSON.bak.final"
-
-    jq '
-    .chapters |= map(
-        # Add label controls to SHOW on CAP chapters
-        if .id == "cap-title" or .id == "cap-source" or .id == "cap-flyover" then
-            .onChapterEnter += [
-                {"layer": "cap-canal-label", "opacity": 1},
-                {"layer": "cap-pumps-labels", "opacity": 1},
-                {"layer": "cap-recharge-labels", "opacity": 1}
-            ]
-        else . end |
-
-        # Add label controls to HIDE when leaving CAP section
-        if .id == "srp-title" then
-            .onChapterEnter += [
-                {"layer": "cap-canal-label", "opacity": 0},
-                {"layer": "cap-pumps-labels", "opacity": 0},
-                {"layer": "cap-recharge-labels", "opacity": 0}
-            ]
-        else . end
-    )
-    ' "$STORY_JSON.bak.final" > "$STORY_JSON"
-
-    echo "    - Added label visibility controls to $STORY_JSON."
-fi
-
-echo -e "\n🎉 All files updated successfully! Your story is now polished with labels and river context."
-echo "Run './update.sh' to commit and push the changes."
+echo "    - Successfully replaced old layer definitions with the complete new set."
+echo -e "\n✅ Final upgrade complete. The project is now fully functional with all features."
+echo "Run './update.sh' to commit and push."
