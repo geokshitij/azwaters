@@ -313,6 +313,13 @@
                         'sky-atmosphere-sun-intensity': 15
                     }
                 });
+
+                // --- START: Highlight Rivers in Base Map ---
+                // This makes the existing river data in the map style more prominent.
+                map.setPaintProperty('water', 'fill-color', '#3399ff');
+                map.setPaintProperty('waterway', 'line-color', '#3399ff');
+                map.setPaintProperty('waterway', 'line-width', 2);
+                // --- END: Highlight Rivers in Base Map ---
             };
 
             // setup the instance, pass callback functions
