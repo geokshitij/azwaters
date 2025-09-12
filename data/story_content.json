@@ -1,0 +1,31 @@
+{
+    "style": "mapbox://styles/mapbox/satellite-streets-v12",
+    "theme": "dark",
+    "use3dTerrain": true,
+    "showMarkers": true,
+    "markerColor": "#3FB1CE",
+    "title": "Arizona's Lifelines: The Story of SRP and CAP",
+    "subtitle": "An interactive story of how water shaped the desert.",
+    "byline": "By A Digital Historian",
+    "footer": "Created using the Mapbox Storytelling template.",
+    "chapters": [
+        {
+            "id": "hohokam",
+            "title": "The Ancient Innovators",
+            "alignment": "left",
+            "image": "./assets/hohokam.jpg",
+            "description": "The Hohokam people engineered a vast and sophisticated canal network in the Salt River Valley centuries ago, laying the groundwork for modern irrigation.",
+            "location": {"center": [-112.0740, 33.4484],"zoom": 11,"pitch": 20,"bearing": 0},
+            "rotateAnimation": false
+        },
+        {
+            "id": "roosevelt-dam",
+            "title": "Taming the Salt River",
+            "alignment": "right",
+            "image": "./assets/roosevelt.jpg",
+            "description": "The Theodore Roosevelt Dam, completed in 1911, was a monumental feat of engineering that secured a reliable water source for the valley.",
+            "location": {"center": [-111.1517, 33.6667],"zoom": 13.5,"pitch": 60,"bearing": -30},
+            "rotateAnimation": true
+        }
+    ]
+}
