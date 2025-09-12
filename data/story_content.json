@@ -3,7 +3,7 @@
     "theme": "dark",
     "use3dTerrain": true,
     "showMarkers": true,
-    "markerColor": "#3FB1CE",
+    "markerColor": "#FFA500",
     "title": "Arizona's Water Systems",
     "subtitle": "An interactive story of the Salt River Project and the Central Arizona Project.",
     "byline": "By Kshitij Dahal",
@@ -13,71 +13,57 @@
             "id": "cap-intro",
             "title": "Central Arizona Project: A Lifeline from the Colorado",
             "alignment": "left",
-            "image": "",
-            "description": "The Central Arizona Project (CAP) is a 336-mile aqueduct that brings water from the Colorado River to Central and Southern Arizona. Its delivery amounts depend heavily on the river's health and water levels, which vary year to year based on snowpack and drought conditions. See the full system map <a href='https://www.cap-az.com/cap-system/water-operations/system-map/' target='_blank'>here</a>.",
+            "description": "The Central Arizona Project (CAP) is a 336-mile aqueduct that brings water from the Colorado River to Central and Southern Arizona. It begins here, at Lake Havasu.",
             "location": {"center": [-114.3686, 34.4839],"zoom": 11,"pitch": 45,"bearing": 90},
             "rotateAnimation": true
         },
         {
-            "id": "cap-system",
-            "title": "The CAP Canal System",
+            "id": "cap-system-flyover",
+            "title": "Following the CAP Canal",
             "alignment": "full",
-            "image": "",
-            "description": "From Lake Havasu, a series of massive pumping plants lift the water over 2,900 feet in elevation, allowing it to flow south through a network of canals, tunnels, and siphons to serve millions of people and vast agricultural lands.",
-            "location": {"center": [-112.5, 33.5],"zoom": 7.5,"pitch": 20,"bearing": 0},
-            "rotateAnimation": false
+            "description": "From Lake Havasu, a series of massive pumping plants lift the water, allowing it to flow south. The camera will now follow the general path of the canal, which is visible on the satellite imagery, as it makes its way toward Phoenix.",
+            "location": {"center": [-112.5, 33.5],"zoom": 7.5,"pitch": 20,"bearing": 0}
         },
         {
             "id": "srp-intro",
             "title": "The Salt River Project",
             "alignment": "right",
-            "image": "",
-            "description": "The Salt River Project (SRP) manages a different watershed, primarily the Salt and Verde Rivers. It operates a series of dams and reservoirs that provide a surface water supply to the Phoenix metropolitan area. <a href='https://www.srpnet.com/about/about-srp' target='_blank'>Learn more about SRP</a>.",
-            "location": {"center": [-111.5, 33.7],"zoom": 8.5,"pitch": 30,"bearing": 0},
-            "rotateAnimation": false
+            "description": "The Salt River Project (SRP) manages the Salt and Verde Rivers watershed. It operates a series of dams and reservoirs that provide a surface water supply to the Phoenix metropolitan area.",
+            "location": {"center": [-111.5, 33.7],"zoom": 8.5,"pitch": 30,"bearing": 0}
         },
         {
-            "id": "verde-river-system",
+            "id": "verde-river-system-overview",
             "title": "The Verde River Dams",
             "alignment": "left",
-            "image": "",
-            "description": "The Verde River system, a major tributary to the Salt, is managed by two dams. We begin with the most upstream reservoir.",
-            "location": {"center": [-111.68, 33.9],"zoom": 9.5,"pitch": 40,"bearing": 170},
-            "rotateAnimation": false
+            "description": "The Verde River system is managed by two dams. This view shows both: Horseshoe Dam to the north and Bartlett Dam to the south. A marker will now visit each one.",
+            "location": {"center": [-111.68, 33.9],"zoom": 9.5,"pitch": 40,"bearing": 170}
         },
         {
             "id": "horseshoe-dam",
             "title": "1. Horseshoe Dam (Verde River)",
             "alignment": "left",
-            "image": "",
             "description": "Horseshoe Dam, the most upstream dam on the Verde River, was completed in 1946. It serves primarily as a storage reservoir to capture runoff.",
-            "location": {"center": [-111.7236, 33.9983],"zoom": 14,"pitch": 50,"bearing": 180},
-            "rotateAnimation": false
+            "location": {"center": [-111.7236, 33.9983],"zoom": 14,"pitch": 50,"bearing": 180}
         },
         {
             "id": "bartlett-dam",
             "title": "2. Bartlett Dam (Verde River)",
             "alignment": "right",
-            "image": "",
-            "description": "Downstream is Bartlett Dam, which forms Bartlett Reservoir. Completed in 1939, its construction predates Horseshoe, and it was the world's highest multiple-arch dam at the time.",
-            "location": {"center": [-111.6369, 33.8183],"zoom": 13.5,"pitch": 55,"bearing": 160},
-            "rotateAnimation": false
+            "description": "Downstream is Bartlett Dam. Completed in 1939, it was the world's highest multiple-arch dam at the time of its construction.",
+            "location": {"center": [-111.6369, 33.8183],"zoom": 13.5,"pitch": 55,"bearing": 160}
         },
         {
-            "id": "salt-river-system",
+            "id": "salt-river-system-overview",
             "title": "The Salt River Dams",
             "alignment": "left",
-            "image": "",
-            "description": "The main branch of the SRP system is the Salt River itself, controlled by a staircase of four major dams that provide critical water storage and hydroelectric power.",
-            "location": {"center": [-111.33, 33.6],"zoom": 9.5,"pitch": 40,"bearing": -20},
-            "rotateAnimation": false
+            "description": "The main branch of the SRP system is the Salt River itself, controlled by a staircase of four major dams. This view shows the chain of reservoirs they create. A marker will now visit each dam from east to west.",
+            "location": {"center": [-111.33, 33.6],"zoom": 9.5,"pitch": 40,"bearing": -20}
         },
         {
             "id": "roosevelt-dam",
             "title": "1. Theodore Roosevelt Dam (Salt River)",
             "alignment": "right",
-            "image": "",
-            "description": "The system's cornerstone, Roosevelt Dam (1911), is the most upstream and forms the largest reservoir, providing the primary water storage for the river.",
+            "description": "The system's cornerstone, Roosevelt Dam (1911), is the most upstream and forms the largest reservoir, providing the primary water storage.",
             "location": {"center": [-111.1517, 33.6667],"zoom": 13.5,"pitch": 60,"bearing": 25},
             "rotateAnimation": true
         },
@@ -85,37 +71,29 @@
             "id": "horse-mesa-dam",
             "title": "2. Horse Mesa Dam (Salt River)",
             "alignment": "right",
-            "image": "",
             "description": "Downstream from Roosevelt, Horse Mesa Dam (1927) forms Apache Lake and is a key power generator.",
-            "location": {"center": [-111.3325, 33.6069],"zoom": 14,"pitch": 55,"bearing": 0},
-            "rotateAnimation": false
+            "location": {"center": [-111.3325, 33.6069],"zoom": 14,"pitch": 55,"bearing": 0}
         },
         {
             "id": "mormon-flat-dam",
             "title": "3. Mormon Flat Dam (Salt River)",
             "alignment": "left",
-            "image": "",
             "description": "Next, Mormon Flat Dam (1925) creates Canyon Lake and features powerful pumped-storage hydro capabilities.",
-            "location": {"center": [-111.4550, 33.5350],"zoom": 14,"pitch": 65,"bearing": 30},
-            "rotateAnimation": false
+            "location": {"center": [-111.4550, 33.5350],"zoom": 14,"pitch": 65,"bearing": 30}
         },
         {
             "id": "stewart-mountain-dam",
             "title": "4. Stewart Mountain Dam (Salt River)",
             "alignment": "right",
-            "image": "",
             "description": "The final dam, Stewart Mountain Dam (1930), forms Saguaro Lake before releasing water into the valley's canal system.",
-            "location": {"center": [-111.5397, 33.5658],"zoom": 13.8,"pitch": 60,"bearing": -45},
-            "rotateAnimation": false
+            "location": {"center": [-111.5397, 33.5658],"zoom": 13.8,"pitch": 60,"bearing": -45}
         },
         {
             "id": "key-agencies",
             "title": "The Governing Agencies",
             "alignment": "center",
-            "image": "",
-            "description": "Managing this complex system involves multiple key agencies. The Arizona Department of Water Resources (ADWR) oversees water rights and long-term planning, while the Arizona Department of Environmental Quality (ADEQ) ensures water quality standards are met. Many of these projects were originally funded and constructed by the federal Bureau of Reclamation, which still plays a role in the region.",
-            "location": {"center": [-111.5, 33.0],"zoom": 6.5,"pitch": 0,"bearing": 0},
-            "rotateAnimation": false
+            "description": "Managing this complex system involves multiple key agencies. The Arizona Department of Water Resources (ADWR) oversees water rights and long-term planning, while the Arizona Department of Environmental Quality (ADEQ) ensures water quality standards are met.",
+            "location": {"center": [-111.5, 33.0],"zoom": 6.5,"pitch": 0,"bearing": 0}
         }
     ]
 }
