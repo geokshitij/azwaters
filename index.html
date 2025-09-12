@@ -318,7 +318,6 @@
             // setup the instance, pass callback functions
         // --- START: ADDED CODE FOR GIS DATA ---
         // Add sources for CAP data
-        map.addSource('cap-canal', {
         // --- START: ADD RIVERS DATA ---
         map.addSource('az-rivers', {
             'type': 'geojson',
@@ -336,6 +335,7 @@
             }
         }, 'cap-canal-layer'); // This places the rivers layer *before* the canal layer
         // --- END: ADD RIVERS DATA ---
+        map.addSource('cap-canal', {
             'type': 'geojson',
             'data': './data/CAP_Canal.geojson'
         });
