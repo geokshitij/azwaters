@@ -1,0 +1,25 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Verde River System"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.65, 33.9]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Salt River System"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.33, 33.6]
+      }
+    }
+  ]
+}
