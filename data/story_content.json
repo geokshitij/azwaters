@@ -160,8 +160,8 @@
       "description": "<h3>Harnessing local rivers, the SRP is one of the nation's oldest and most successful reclamation projects, managing the Salt and Verde watershed.</h3>",
       "location": {
         "center": [
-          -111.5,
-          33.7
+          -111.65,
+          33.9
         ],
         "zoom": 8.5,
         "pitch": 30,
