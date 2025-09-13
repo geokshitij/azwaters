@@ -13,6 +13,7 @@
       "id": "intro-title",
       "title": "Water in the Desert",
       "alignment": "center",
+      "showMarker": false,
       "description": "Arizona's vibrant cities and farms exist because of two monumental water projects. This story explores the journey of water through the Central Arizona Project and the Salt River Project—the systems that make life in the Sonoran Desert possible.",
       "location": {
         "center": [
@@ -30,6 +31,7 @@
       "id": "cap-title",
       "title": "Part 1: The Central Arizona Project",
       "alignment": "full",
+      "showMarker": false,
       "description": "<h3>A 336-mile aqueduct defying gravity to deliver Colorado River water across the state.</h3><p>The blue line represents the CAP canal, orange dots are pumping plants, and green dots are recharge facilities.</p>",
       "location": {
         "center": [
@@ -157,6 +159,7 @@
       "id": "srp-title",
       "title": "Part 2: The Salt River Project",
       "alignment": "full",
+      "showMarker": false,
       "description": "<h3>Harnessing local rivers, the SRP is one of the nation's oldest and most successful reclamation projects, managing the Salt and Verde watershed.</h3>",
       "location": {
         "center": [
@@ -353,6 +356,7 @@
       "id": "governance-title",
       "title": "Part 3: The Architects of Water Policy",
       "alignment": "full",
+      "showMarker": false,
       "description": "<h3>This complex physical system is managed by an equally complex web of agencies, ensuring every drop is accounted for, treated, and delivered.</h3>",
       "location": {
         "center": [
@@ -370,6 +374,7 @@
       "id": "governance-agencies",
       "title": "Who's in Charge?",
       "alignment": "center",
+      "showMarker": false,
       "description": "Managing this system involves multiple key agencies: <ul><li><strong>Bureau of Reclamation:</strong> The federal agency that financed and constructed many of these massive projects.</li><li><strong>ADWR:</strong> The Arizona Department of Water Resources, which oversees water rights and long-term planning.</li><li><strong>CAWCD & SRP:</strong> The local districts that operate the systems day-to-day.</li></ul>",
       "location": {
         "center": [
@@ -387,6 +392,7 @@
       "id": "conclusion",
       "title": "An Engineered Oasis",
       "alignment": "center",
+      "showMarker": false,
       "description": "The result of this century of engineering is a thriving metropolis in the heart of the desert. These projects are a testament to human ingenuity, but they also highlight the profound responsibility of managing a finite resource in an arid land.",
       "location": {
         "center": [
