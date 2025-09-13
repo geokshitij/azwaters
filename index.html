@@ -426,6 +426,45 @@
         });
         // --- END: ADDED CODE FOR GIS DATA ---
 
+        // --- START: ADDED CODE FOR SRP MARKERS ---
+        map.addSource('srp-markers', {
+            'type': 'geojson',
+            'data': './data/srp_markers.geojson'
+        });
+
+        map.addLayer({
+            'id': 'srp-markers-points',
+            'type': 'circle',
+            'source': 'srp-markers',
+            'paint': {
+                'circle-radius': 8,
+                'circle-color': '#FFA500', // Orange
+                'circle-stroke-color': 'white',
+                'circle-stroke-width': 2,
+                'circle-opacity': 0 // Initially hidden
+            }
+        });
+
+        map.addLayer({
+            'id': 'srp-markers-labels',
+            'type': 'symbol',
+            'source': 'srp-markers',
+            'layout': {
+                'text-field': ['get', 'name'],
+                'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
+                'text-size': 14,
+                'text-offset': [0, 1.5],
+                'text-anchor': 'top'
+            },
+            'paint': {
+                'text-color': '#ffffff',
+                'text-halo-color': '#000000',
+                'text-halo-width': 1.5,
+                'text-opacity': 0 // Initially hidden
+            }
+        });
+        // --- END: ADDED CODE FOR SRP MARKERS ---
+
         // --- START: ADD NEW LABEL LAYERS HERE ---
         // Add labels for the PUMPING stations
         map.addLayer({

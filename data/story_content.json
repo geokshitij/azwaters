@@ -191,9 +191,26 @@
         {
           "layer": "cap-recharge-labels",
           "opacity": 0
+        },
+        {
+          "layer": "srp-markers-points",
+          "opacity": 1
+        },
+        {
+          "layer": "srp-markers-labels",
+          "opacity": 1
         }
       ],
-      "onChapterExit": []
+      "onChapterExit": [
+        {
+          "layer": "srp-markers-points",
+          "opacity": 0
+        },
+        {
+          "layer": "srp-markers-labels",
+          "opacity": 0
+        }
+      ]
     },
     {
       "id": "salt-river-overview",
