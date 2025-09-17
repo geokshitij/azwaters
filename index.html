@@ -31,7 +31,7 @@
             position: fixed;
         }
 
-        #header {
+        /* #header {
             margin: auto;
             width: 100%;
             position: relative;
@@ -44,6 +44,24 @@
             margin: 0;
             padding: 2vh 2vw;
             text-align: center;
+        } */
+        
+        #header {
+            position: relative;
+            z-index: 5;
+            margin: 5vh 5vw; /* Give it some space from the top and left edges */
+            width: 35vw; /* Set a width for the box */
+            padding: 20px;
+            background-color: rgba(68, 68, 68, 0.85); /* Semi-transparent dark background */
+            border-radius: 5px; /* Soften the corners */
+        }
+
+        #header h1,
+        #header h2,
+        #header p {
+            margin: 0 0 10px 0; /* Add some spacing between lines */
+            padding: 0;
+            text-align: left; /* Align the text to the left */
         }
 
         #footer {
