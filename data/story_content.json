@@ -36,7 +36,7 @@
     },
     {
       "id": "cap-title",
-      "title": "The Lifeline: The Central Arizona Project",
+      "title": "Chapter I: The Central Arizona Project",
       "alignment": "full",
       "showMarker": false,
       "description": "<h3>A 336-mile aqueduct defying gravity to deliver Colorado River water across the state. This entire system's supply is dependent on the health of Lake Mead.</h3><p>The blue line is the CAP canal, orange dots are pumping plants, and green dots are recharge facilities.</p>",
@@ -87,7 +87,7 @@
     },
     {
       "id": "srp-title",
-      "title": "The Local Powerhouse: The Salt River Project",
+      "title": "Chapter II: The Salt River Project",
       "alignment": "full",
       "showMarker": false,
       "description": "<h3>Harnessing local rivers, the SRP is a separate, older, and more resilient system. It manages the Salt and Verde watershed, providing a critical water source independent of the Colorado River.</h3>",
@@ -227,7 +227,7 @@
     },
     {
       "id": "governance-intro",
-      "title": "Part 3: The New Reality of Policy, People, and Price",
+      "title": "Chapter III: The New Reality of Policy, People, and Price",
       "alignment": "full",
       "showMarker": false,
       "description": "<h3>This physical system is managed by a complex web of agencies, but now faces a new reality: a historic drought that is changing the rules of the game.</h3>",
