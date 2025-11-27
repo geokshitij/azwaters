@@ -10,7 +10,7 @@
       "id": "intro-title",
       "alignment": "full",
       "title": "Arizona's Water Systems",
-      "description": "<p>Arizona's vibrant cities and farms exist because of two monumental water projects. This story explores the journey of water through the Central Arizona Project and the Salt River Project—the systems that make life in the Sonoran Desert possible.</p><p>These are feats of engineering that allowed an oasis to bloom in the desert. Today, they are at the center of a modern struggle against historic drought, growing demand, and the complex laws governing a finite resource.</p><p><strong>To navigate, scroll with your mouse or use the 'Previous' and 'Next' buttons.</strong></p><p>In the chapters that follow, we will:</p><ul><li>Explore the Colorado River's lifeline, starting at the iconic <strong>Hoover Dam</strong> and following the path of the <strong>Central Arizona Project (CAP)</strong>.</li><li>Journey through the reservoirs of the <strong>Salt River Project (SRP)</strong>, the resilient local system that powers Phoenix.</li><li>Uncover the modern reality of water in the West: the politics, the high-stakes water market, and the crucial roles played by <strong>farmers, cities, and Tribal Nations</strong>.</li></ul><p><em>For suggestions or feedback, please contact kdahal3@asu.edu.</em></p>",
+      "description": "<p>Central Arizona's vibrant cities and farms exist because of two monumental water projects. This story explores the journey of water through the Central Arizona Project and the Salt River Project—the systems that make life in the Sun Corridor possible.</p><p>These are feats of engineering that allowed an oasis to bloom in the desert. Today, they are at the center of a modern struggle against historic drought, growing demand, and the complex laws governing a finite resource.</p><p><strong>To navigate, scroll with your mouse or use the 'Previous' and 'Next' buttons.</strong></p><p>In the chapters that follow, we will:</p><ul><li>Explore the Colorado River's lifeline, starting at the iconic <strong>Hoover Dam</strong> and following the path of the <strong>Central Arizona Project (CAP)</strong>.</li><li>Journey through the reservoirs of the <strong>Salt River Project (SRP)</strong>, the resilient local system that powers Phoenix.</li><li>Uncover the modern reality of water in the West: the politics, the high-stakes water market, and the crucial roles played by <strong>farmers, cities, and Tribal Nations</strong>.</li></ul><p><em>For suggestions or feedback, please contact kdahal3@asu.edu.</em></p>",
       "location": {
         "center": [-111.5, 33.5],
         "zoom": 6,
@@ -39,7 +39,7 @@
       "title": "Chapter I: The Central Arizona Project",
       "alignment": "full",
       "showMarker": false,
-      "description": "<h3>A 336-mile aqueduct defying gravity to deliver Colorado River water across the state. This entire system's supply is dependent on the health of Lake Mead.</h3><p>The blue line is the CAP canal, orange dots are pumping plants, and green dots are recharge facilities.</p>",
+      "description": "<h3>A 336-mile aqueduct defying gravity to deliver Colorado River water across the state. This entire system's supply is dependent on the health of Lake Mead.</h3><p>The blue line is the CAP canal, orange dots are pumping plants, and green dots are underground storage (recharge) facilities.</p>",
       "location": {
         "center": [-113.0, 33.8],
         "zoom": 7,
@@ -67,7 +67,10 @@
         "pitch": 60,
         "bearing": 90
       },
-      "onChapterEnter": [],
+      "onChapterEnter": [
+        {"layer": "cap-canal-layer", "opacity": 0.85},
+        {"layer": "cap-pumps-layer", "opacity": 1}
+      ],
       "onChapterExit": []
     },
     {
@@ -75,7 +78,7 @@
       "title": "Following the Flow",
       "alignment": "right",
       "showMarker": false,
-      "description": "The water doesn't flow on its own. A series of powerful pumping plants lifts it over 2,900 feet. As we fly south, the faint line of the canal carves its way through the desert, a man-made river on an epic journey.",
+      "description": "The water doesn't flow on its own. A series of powerful pumping plants lifts it over 2,900 feet. This monumental effort is powered by a dedicated portion of electricity from sources including the Hoover Dam itself. As we fly south, the faint line of the canal carves its way through the desert, a man-made river on an epic journey.",
       "location": {
         "center": [-112.5, 33.5],
         "zoom": 7.5,
@@ -184,6 +187,20 @@
       "onChapterExit": []
     },
     {
+      "id": "srp-groundwater",
+      "title": "SRP's Secret Weapon: Groundwater Wells",
+      "alignment": "left",
+      "description": "Beyond the rivers and reservoirs, SRP manages a vast network of over 250 groundwater wells. During drought, when surface water is scarce, these wells are turned on to supplement the supply, providing a critical buffer that makes the system incredibly resilient—a key advantage over the CAP.",
+      "location": {
+        "center": [-111.9, 33.5],
+        "zoom": 9,
+        "pitch": 25,
+        "bearing": 0
+      },
+      "onChapterEnter": [],
+      "onChapterExit": []
+    },
+    {
       "id": "verde-river-overview",
       "title": "The Verde River System",
       "alignment": "left",
@@ -247,8 +264,8 @@
       "description": "The 'bathtub ring' around Lake Mead is a stark visual of the problem. Decades of drought and overuse mean we have consistently promised more water than the river can provide. This has forced drastic cuts, especially to the Central Arizona Project.",
       "location": {
         "center": [-114.73728, 36.01636],
-        "zoom": 12.5,
-        "pitch": 50,
+        "zoom": 14,
+        "pitch": 60,
         "bearing": 0
       },
       "onChapterEnter": [],
@@ -258,7 +275,7 @@
       "id": "market-cap-cuts",
       "title": "The First to be Cut",
       "alignment": "right",
-      "description": "The rules of the CAP are clear: in a shortage, farmers are the first to lose their water. Since 2022, the water supply for agricultural districts in Central Arizona, seen here, has been cut to nearly zero.",
+      "description": "The rules of the CAP are clear: in a shortage, Central Arizona's farmers, who rely on CAP water, are the first to lose their supply. Since 2022, the water supply for these agricultural districts has been cut to nearly zero.",
       "location": {
         "center": [-111.35213, 32.95217],
         "zoom": 10,
@@ -286,7 +303,7 @@
       "id": "market-cibola",
       "title": "The Seller: Irrigation Districts",
       "alignment": "right",
-      "description": "An irrigation district farmer in Cibola Valley with senior river rights found it more profitable to sell that water to a city for over <strong>$12,000 per acre-foot</strong> than to grow crops. This water is more reliable than the CAP's supply.",
+      "description": "An irrigation district farmer in Cibola Valley with 'senior' river rights—some of the oldest and most protected claims on the river—found it more profitable to sell that water to a city for over <strong>$12,000 per acre-foot</strong>. Under the 'first in time, first in right' priority system, these rights are far more reliable than the CAP's junior supply.",
       "location": {
         "center": [-114.67290, 33.39045],
         "zoom": 11,
@@ -303,11 +320,13 @@
       "description": "The Harquahala Valley deal is even more telling. Because this groundwater is not connected to the Colorado River, it has a 'higher reliability' and a much higher price—nearly <strong>$20,000 per acre-foot</strong>. It will be transported to cities using the CAP canal as a 'water highway'.",
       "location": {
         "center": [-113.1539, 33.35681],
-        "zoom": 9.5,
+        "zoom": 8.5,
         "pitch": 30,
         "bearing": 0
       },
-      "onChapterEnter": [],
+      "onChapterEnter": [
+        {"layer": "cap-canal-layer", "opacity": 0.85}
+      ],
       "onChapterExit": []
     },
     {
@@ -329,7 +348,7 @@
       "title": "An Engineered Oasis",
       "alignment": "center",
       "showMarker": false,
-      "description": "The story of Arizona's water is no longer just about engineering. It's about economics, collaboration, and adaptation. The result of a century of work is this thriving metropolis, a testament to human ingenuity but also a profound reminder of our responsibility to manage a finite resource in an arid land.",
+      "description": "The story of Central Arizona's water is no longer just about engineering. It's about economics, collaboration, and adaptation. The result of a century of work is this thriving metropolis, a testament to human ingenuity but also a profound reminder of our responsibility to manage a finite resource in an arid land.",
       "location": {
         "center": [-112.074, 33.4484],
         "zoom": 9,
