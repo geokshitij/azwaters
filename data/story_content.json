@@ -140,7 +140,7 @@
         "pitch": 60,
         "bearing": 25
       },
-      "rotateAnimation": true,
+      "rotateAnimation": false,
       "onChapterEnter": [],
       "onChapterExit": []
     },
@@ -192,9 +192,9 @@
       "alignment": "left",
       "description": "Beyond the rivers and reservoirs, SRP manages a vast network of over 250 groundwater wells. During drought, when surface water is scarce, these wells are turned on to supplement the supply, providing a critical buffer that makes the system incredibly resilient—a key advantage over the CAP.",
       "location": {
-        "center": [-111.9, 33.5],
+        "center": [-111.85, 33.4],
         "zoom": 9,
-        "pitch": 25,
+        "pitch": 15,
         "bearing": 0
       },
       "onChapterEnter": [],
@@ -264,7 +264,7 @@
       "description": "The 'bathtub ring' around Lake Mead is a stark visual of the problem. Decades of drought and overuse mean we have consistently promised more water than the river can provide. This has forced drastic cuts, especially to the Central Arizona Project.",
       "location": {
         "center": [-114.73728, 36.01636],
-        "zoom": 14,
+        "zoom": 15,
         "pitch": 60,
         "bearing": 0
       },
@@ -348,7 +348,7 @@
       "title": "An Engineered Oasis",
       "alignment": "center",
       "showMarker": false,
-      "description": "The story of Central Arizona's water is no longer just about engineering. It's about economics, collaboration, and adaptation. The result of a century of work is this thriving metropolis, a testament to human ingenuity but also a profound reminder of our responsibility to manage a finite resource in an arid land.",
+      "description": "The story of Central Arizona's water is no longer just about engineering. It's about economics, collaboration, and adaptation. The result of a century of work is this thriving metropolis, a testament to human ingenuity but also a profound reminder of our responsibility to manage a finite resource in an arid land.<p>For a more detailed look at the impacts of water shortages in the region, explore this related storymap from ASU: <a href=\"https://storymaps.arcgis.com/stories/a1a782ce054d4ad28a0d7d0845e6c03d\" target=\"_blank\">Quantifying Shortage Impacts</a>.</p>",
       "location": {
         "center": [-112.074, 33.4484],
         "zoom": 9,
