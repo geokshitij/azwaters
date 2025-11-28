@@ -209,7 +209,7 @@
         "center": [-111.65, 33.9],
         "zoom": 10,
         "pitch": 40,
-        "bearing": 170
+        "bearing": 0
       },
       "onChapterEnter": [],
       "onChapterExit": []
@@ -223,7 +223,7 @@
         "center": [-111.7089, 33.9831],
         "zoom": 14,
         "pitch": 50,
-        "bearing": 180
+        "bearing": 0
       },
       "onChapterEnter": [],
       "onChapterExit": []
@@ -237,7 +237,7 @@
         "center": [-111.6317, 33.8181],
         "zoom": 13.5,
         "pitch": 55,
-        "bearing": 160
+        "bearing": 0
       },
       "onChapterEnter": [],
       "onChapterExit": []
