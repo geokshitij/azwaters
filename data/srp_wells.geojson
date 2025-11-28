@@ -1,0 +1,60 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "name": "SRP Groundwater Well" },
+      "geometry": { "type": "Point", "coordinates": [-112.30631, 33.45670] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "SRP Groundwater Well" },
+      "geometry": { "type": "Point", "coordinates": [-112.31412, 33.42424] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "SRP Groundwater Well" },
+      "geometry": { "type": "Point", "coordinates": [-112.29011, 33.46429] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "SRP Groundwater Well" },
+      "geometry": { "type": "Point", "coordinates": [-112.27286, 33.44884] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "SRP Groundwater Well" },
+      "geometry": { "type": "Point", "coordinates": [-112.26758, 33.39600] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "SRP Groundwater Well" },
+      "geometry": { "type": "Point", "coordinates": [-112.23765, 33.45237] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "SRP Groundwater Well" },
+      "geometry": { "type": "Point", "coordinates": [-112.23799, 33.44071] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "SRP Groundwater Well" },
+      "geometry": { "type": "Point", "coordinates": [-112.25464, 33.39117] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "SRP Groundwater Well" },
+      "geometry": { "type": "Point", "coordinates": [-112.25491, 33.43597] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "SRP Groundwater Well" },
+      "geometry": { "type": "Point", "coordinates": [-112.25548, 33.41008] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "SRP Groundwater Well" },
+      "geometry": { "type": "Point", "coordinates": [-112.24601, 33.46504] }
+    }
+  ]
+}

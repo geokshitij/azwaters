@@ -469,6 +469,26 @@
         });
         // --- END: ADDED CODE FOR SRP MARKERS ---
 
+        // --- START: ADDED CODE FOR SRP WELLS ---
+        map.addSource('srp-wells', {
+            'type': 'geojson',
+            'data': './data/srp_wells.geojson'
+        });
+
+        map.addLayer({
+            'id': 'srp-wells-layer',
+            'type': 'circle',
+            'source': 'srp-wells',
+            'paint': {
+                'circle-radius': 5,
+                'circle-color': '#FFFF00', // Yellow
+                'circle-stroke-color': 'black',
+                'circle-stroke-width': 1,
+                'circle-opacity': 0 // Initially hidden
+            }
+        });
+        // --- END: ADDED CODE FOR SRP WELLS ---
+
         // --- START: ADD NEW LABEL LAYERS HERE ---
         // Add labels for the PUMPING stations
         map.addLayer({

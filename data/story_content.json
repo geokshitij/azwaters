@@ -190,15 +190,19 @@
       "id": "srp-groundwater",
       "title": "SRP's Secret Weapon: Groundwater Wells",
       "alignment": "left",
-      "description": "Beyond the rivers and reservoirs, SRP manages a vast network of over 250 groundwater wells. During drought, when surface water is scarce, these wells are turned on to supplement the supply, providing a critical buffer that makes the system incredibly resilient—a key advantage over the CAP.",
+      "description": "Beyond the rivers and reservoirs, SRP manages a vast network of over 250 groundwater wells (a sample of which are shown here in yellow). During drought, when surface water is scarce, these wells are turned on to supplement the supply, providing a critical buffer that makes the system incredibly resilient—a key advantage over the CAP.",
       "location": {
         "center": [-111.85, 33.4],
         "zoom": 9,
         "pitch": 15,
         "bearing": 0
       },
-      "onChapterEnter": [],
-      "onChapterExit": []
+      "onChapterEnter": [
+        {"layer": "srp-wells-layer", "opacity": 1}
+      ],
+      "onChapterExit": [
+        {"layer": "srp-wells-layer", "opacity": 0}
+      ]
     },
     {
       "id": "verde-river-overview",
