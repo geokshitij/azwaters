@@ -18,7 +18,7 @@ If you have suggestions, find errors, or want to add new information, please fee
 
 If you use or reference this project in your work, please use the following citation:
 ```
-Dahal, K. (2025). *AZ Waters: An Interactive Storymap*. Retrieved from https://geokshitij.github.io/azwaters/
+Dahal, K. (2025). AZ Waters: An Interactive Storymap. Retrieved from https://geokshitij.github.io/azwaters/
 ```
 
 ## License
