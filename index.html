@@ -469,25 +469,43 @@
         });
         // --- END: ADDED CODE FOR SRP MARKERS ---
 
-        // --- START: ADDED CODE FOR SRP WELLS ---
-        map.addSource('srp-wells', {
+        // --- START: ADDED CODE FOR ALL SRP WELLS ---
+        map.addSource('srp-all-wells', {
             'type': 'geojson',
-            'data': './data/srp_wells.geojson'
+            'data': './data/salt_river_project_wells.geojson'
         });
 
         map.addLayer({
-            'id': 'srp-wells-layer',
+            'id': 'srp-all-wells-layer',
             'type': 'circle',
-            'source': 'srp-wells',
+            'source': 'srp-all-wells',
             'paint': {
-                'circle-radius': 5,
+                'circle-radius': 4,
                 'circle-color': '#FFFF00', // Yellow
                 'circle-stroke-color': 'black',
-                'circle-stroke-width': 1,
+                'circle-stroke-width': 0.5,
                 'circle-opacity': 0 // Initially hidden
             }
         });
-        // --- END: ADDED CODE FOR SRP WELLS ---
+        // --- END: ADDED CODE FOR ALL SRP WELLS ---
+
+        // --- START: ADDED CODE FOR TRIBAL LANDS ---
+        map.addSource('tribal-lands', {
+            'type': 'geojson',
+            'data': './data/American_Indian_Reservations_in_Arizona.geojson'
+        });
+
+        map.addLayer({
+            'id': 'tribal-lands-layer',
+            'type': 'fill',
+            'source': 'tribal-lands',
+            'paint': {
+                'fill-color': '#9e66ab', // A semi-transparent purple
+                'fill-opacity': 0, // Initially hidden
+                'fill-outline-color': '#FFFFFF'
+            }
+        });
+        // --- END: ADDED CODE FOR TRIBAL LANDS ---
 
         // --- START: ADD NEW LABEL LAYERS HERE ---
         // Add labels for the PUMPING stations

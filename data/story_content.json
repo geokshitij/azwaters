@@ -4,7 +4,7 @@
   "use3dTerrain": true,
   "showMarkers": true,
   "markerColor": "#3FB1CE",
-  "footer": "This story is based on presentations and information from:<br>Julia Fonseca, retired Pima County Hydrologist<br>Jacob Richardson, Salt River Project<br>Brian Buzard, Central Arizona Project<br>Ryan Johnson, Central Arizona Water Conservation District<br>Tom Buschatzke, Arizona Department of Water Resources (ADWR)<br>Raquel Neri Barranco, Arizona State University<br><br><a href='https://www.srpnet.com/about/about-srp' target='_blank'>Salt River Project (SRP)</a> | <a href='https://www.cap-az.com/cap-system/water-operations/system-map/' target='_blank'>Central Arizona Project (CAP)</a><br>Developed by Kshitij Dahal (kdahal3@asu.edu)",
+  "footer": "This story is based on presentations and information from:<br>Julia Fonseca, retired Pima County Hydrologist<br>Shraddha Sharma, Colliers Engineering & Design<br>Jacob Richardson, Salt River Project<br>Brian Buzard, Central Arizona Project<br>Ryan Johnson, Central Arizona Water Conservation District<br>Tom Buschatzke, Arizona Department of Water Resources (ADWR)<br>Raquel Neri Barranco, Arizona State University<br><br><a href='https://www.srpnet.com/about/about-srp' target='_blank'>Salt River Project (SRP)</a> | <a href='https://www.cap-az.com/cap-system/water-operations/system-map/' target='_blank'>Central Arizona Project (CAP)</a><br>Developed by Kshitij Dahal (kdahal3@asu.edu)",
   "chapters": [
     {
       "id": "intro-title",
@@ -190,7 +190,7 @@
       "id": "srp-groundwater",
       "title": "SRP's Secret Weapon: Groundwater Wells",
       "alignment": "left",
-      "description": "Beyond the rivers and reservoirs, SRP manages a vast network of over 250 groundwater wells (a sample of which are shown here in yellow). During drought, when surface water is scarce, these wells are turned on to supplement the supply, providing a critical buffer that makes the system incredibly resilient—a key advantage over the CAP.",
+      "description": "Beyond the rivers and reservoirs, SRP manages a vast network of over 250 groundwater wells (shown here in yellow). During drought, when surface water is scarce, these wells are turned on to supplement the supply, providing a critical buffer that makes the system incredibly resilient—a key advantage over the CAP.",
       "location": {
         "center": [-111.85, 33.4],
         "zoom": 9,
@@ -198,10 +198,10 @@
         "bearing": 0
       },
       "onChapterEnter": [
-        {"layer": "srp-wells-layer", "opacity": 1}
+        {"layer": "srp-all-wells-layer", "opacity": 0.8}
       ],
       "onChapterExit": [
-        {"layer": "srp-wells-layer", "opacity": 0}
+        {"layer": "srp-all-wells-layer", "opacity": 0}
       ]
     },
     {
@@ -337,15 +337,19 @@
       "id": "market-heroes-tribes",
       "title": "The Heroes: Tribal Nations",
       "alignment": "center",
-      "description": "The most powerful players in this new market are Arizona's Native American Nations. Their water rights are the oldest and most senior, guaranteed by federal law. As others face cuts, they are now key partners, getting paid to conserve water and leave it in Lake Mead—acting as a critical buffer that has saved the entire system from collapse.",
+      "description": "The most powerful players in this new market are Arizona's Native American Nations, whose lands are highlighted on the map. Their water rights are the oldest and most senior, guaranteed by federal law. As others face cuts, they are now key partners, getting paid to conserve water and leave it in Lake Mead—acting as a critical buffer that has saved the entire system from collapse.",
       "location": {
         "center": [-111.7403, 33.08025],
         "zoom": 9,
         "pitch": 20,
         "bearing": 0
       },
-      "onChapterEnter": [],
-      "onChapterExit": []
+      "onChapterEnter": [
+        {"layer": "tribal-lands-layer", "opacity": 0.5}
+      ],
+      "onChapterExit": [
+        {"layer": "tribal-lands-layer", "opacity": 0}
+      ]
     },
     {
       "id": "conclusion",
