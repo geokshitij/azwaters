@@ -190,7 +190,7 @@
       "id": "srp-groundwater",
       "title": "SRP's Secret Weapon: Groundwater Wells",
       "alignment": "left",
-      "description": "Beyond the rivers and reservoirs, SRP manages a vast network of over 250 groundwater wells (shown here in yellow). During drought, when surface water is scarce, these wells are turned on to supplement the supply, providing a critical buffer that makes the system incredibly resilient—a key advantage over the CAP.",
+      "description": "Beyond the rivers and reservoirs, SRP manages a vast network of over 270 groundwater wells (shown here in yellow). During drought, when surface water is scarce, these wells are turned on to supplement the supply, providing a critical buffer that makes the system incredibly resilient which is also a key advantage over the CAP. Source: ADWR",
       "location": {
         "center": [-111.85, 33.4],
         "zoom": 9,
@@ -340,7 +340,7 @@
       "description": "The most powerful players in this new market are Arizona's Native American Nations, whose lands are highlighted on the map. Their water rights are the oldest and most senior, guaranteed by federal law. As others face cuts, they are now key partners, getting paid to conserve water and leave it in Lake Mead—acting as a critical buffer that has saved the entire system from collapse.",
       "location": {
         "center": [-111.7403, 33.08025],
-        "zoom": 9,
+        "zoom": 7,
         "pitch": 20,
         "bearing": 0
       },
